@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Service
 public class GreetingServiceImpl implements GreetingService {
     private static final String template = "Hello, %s!";
@@ -34,5 +32,11 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     public void deleteGreeting(Long id) {
         greetingRepository.deleteById(id);
+    }
+    @Override
+    public Greeting updateGreeting(Long id, User user) {
+        Greeting greetingRunner = greetingRepository.findById(id).get();
+        greetingRunner.setMessage(String.format(template, (user.toString().isEmpty()) ? "Hello World" : user.getFirstName()+" "+user.getLastName()));
+        return greetingRepository.save(greetingRunner);
     }
 }

@@ -19,4 +19,5 @@ public class Greeting {
     @Id
     private long id;
     private String message;
+
 }
