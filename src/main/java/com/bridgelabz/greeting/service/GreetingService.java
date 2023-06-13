@@ -8,6 +8,12 @@ import java.util.List;
 public interface GreetingService {
 
     Greeting addGreeting(User user);
+
     Greeting fetchGreetingById(Long id);
+
     List<Greeting> getAllList();
+    void deleteGreeting(Long id);
+
 }
+
+

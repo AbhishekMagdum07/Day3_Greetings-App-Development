@@ -28,5 +28,10 @@ public class GreetingController {
     public List<Greeting> getAllList(){
         return greetingService.getAllList();
     }
+    @DeleteMapping("/delete/{id}")
+    public String deleteGreeting(@PathVariable("id") Long id) {
+        greetingService.deleteGreeting(id);
+        return "Student data deleted Successfully!";
+    }
 }
 
