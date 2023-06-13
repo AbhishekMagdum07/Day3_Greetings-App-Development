@@ -20,18 +20,27 @@ public class GreetingController {
         user.setLastName(lastName);
         return greetingService.addGreeting(user);
     }
+
     @GetMapping("/get/{id}")
     public Greeting fetchGreetingById(@PathVariable Long id) {
         return greetingService.fetchGreetingById(id);
     }
+
     @GetMapping("/getAllList")
-    public List<Greeting> getAllList(){
+    public List<Greeting> getAllList() {
         return greetingService.getAllList();
     }
+
     @DeleteMapping("/delete/{id}")
     public String deleteGreeting(@PathVariable("id") Long id) {
         greetingService.deleteGreeting(id);
-        return "Student data deleted Successfully!";
+        return "Greeting deleted Successfully!";
+    }
+
+    @PutMapping("/update/{id}")
+    public Greeting updateGreeting(@PathVariable("id") Long id, @RequestBody User user) {
+        return greetingService.updateGreeting(id, user);
     }
 }
+
 
