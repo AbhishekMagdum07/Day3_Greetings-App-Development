@@ -19,6 +19,8 @@ public class GreetingServiceImpl implements GreetingService {
         String message = String.format(template, (user.toString().isEmpty()) ? "Hello World" : user.getFirstName()+" "+user.getLastName());
         return greetingRepository.save(new Greeting(counter.incrementAndGet(),message));
     }
-
-
+    @Override
+    public Greeting fetchGreetingById(Long id) {
+        return greetingRepository.findById(id).get();
+    }
 }
